@@ -6,7 +6,12 @@
       <close-button type="button" v-else @click="isEditable = !isEditable"/>
     </div>
     <div class="form-item__body">
-      <input type="text" :placeholder="placeholder" :disabled="!isEditable">
+      <input
+        type="text"
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+        :placeholder="placeholder"
+        :disabled="!isEditable">
     </div>
   </div>
 </template>
@@ -17,6 +22,7 @@ import CloseButton from '@/components/CloseButton.vue';
 
 export default {
   props: {
+    value: String,
     label: String,
     placeholder: String,
   },
