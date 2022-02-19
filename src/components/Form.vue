@@ -1,13 +1,13 @@
 <template>
   <form class="form" @submit.prevent="validateForm">
     <!-- Full name -->
-    <form-item v-model="interest.fullName" label="Full Name" placeholder="Your full name"/>
+    <form-item v-model="interest.fullName" label="Full Name" placeholder="Your full name" :disabled="loading"/>
     <p class="form__error" v-if="submitted && !$v.interest.fullName.required">Full name is required</p>
     <!-- Movie -->
-    <form-item v-model="interest.movie" label="Favourite Movie" placeholder="Your favourite movie" />
+    <form-item v-model="interest.movie" label="Favourite Movie" placeholder="Your favourite movie" :disabled="loading"/>
     <p class="form__error" v-if="submitted && !$v.interest.movie.required">Movie is required</p>
     <!-- Book -->
-    <form-item v-model="interest.book" label="Favourite Book" placeholder="Your favourite book" />
+    <form-item v-model="interest.book" label="Favourite Book" placeholder="Your favourite book" :disabled="loading"/>
     <p class="form__error" v-if="submitted && !$v.interest.book.required">Book is required</p>
     <!-- Submit -->
     <simple-button class="form__button" nativeType="submit" :loading="loading">Update</simple-button>

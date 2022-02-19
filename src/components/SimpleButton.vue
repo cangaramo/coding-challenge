@@ -2,7 +2,8 @@
   <button
     @click="$emit('click')"
     :type="nativeType"
-    :class="['simple-button', `simple-button--${size}`, { 'is-loading' : loading }]">
+    :class="['simple-button', `simple-button--${size}`, { 'is-loading' : loading }]"
+    :disabled="disabled">
     <slot></slot>
   </button>
 </template>
@@ -20,6 +21,10 @@ export default {
       type: String,
       default: 'medium',
       validator: (val) => ['small', 'medium'].indexOf(val) >= 0,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -48,6 +53,10 @@ export default {
   }
   &:active {
     transform: scale(0.95);
+  }
+  &[disabled] {
+    cursor: default;
+    opacity: 0.3;
   }
   &.is-loading {
     color: transparent!important;

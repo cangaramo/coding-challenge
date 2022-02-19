@@ -5,7 +5,8 @@
       <simple-button
         v-if="!isEditable"
         size="small"
-        @click="editField">
+        @click="editField"
+        :disabled="disabled">
         Edit
       </simple-button>
       <close-button v-else @click="closeField"/>
@@ -32,6 +33,10 @@ export default {
     value: String,
     label: String,
     placeholder: String,
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
