@@ -2,8 +2,13 @@
   <div class="form-item">
     <div class="form-item__header">
       <p class="form-item__header__title">{{ label }}</p>
-      <simple-button type="button" v-if="!isEditable" @click="isEditable = !isEditable">Edit</simple-button>
-      <close-button type="button" v-else @click="isEditable = !isEditable"/>
+      <simple-button
+        v-if="!isEditable"
+        size="small"
+        @click="isEditable = !isEditable">
+        Edit
+      </simple-button>
+      <close-button v-else @click="isEditable = !isEditable"/>
     </div>
     <div class="form-item__body">
       <input
