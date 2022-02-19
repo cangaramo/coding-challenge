@@ -2,8 +2,8 @@
   <div class="form-item">
     <div class="form-item__header">
       <p class="form-item__header__title">{{ label }}</p>
-      <button type="button" v-if="!isEditable" @click="isEditable = !isEditable">Edit</button>
-      <button type="button" v-else @click="isEditable = !isEditable">Close</button>
+      <simple-button type="button" v-if="!isEditable" @click="isEditable = !isEditable">Edit</simple-button>
+      <close-button type="button" v-else @click="isEditable = !isEditable"/>
     </div>
     <div class="form-item__body">
       <input type="text" :placeholder="placeholder" :disabled="!isEditable">
@@ -12,6 +12,9 @@
 </template>
 
 <script>
+import SimpleButton from '@/components/SimpleButton.vue';
+import CloseButton from '@/components/CloseButton.vue';
+
 export default {
   props: {
     label: String,
@@ -21,6 +24,10 @@ export default {
     return {
       isEditable: false,
     };
+  },
+  components: {
+    SimpleButton,
+    CloseButton,
   },
 };
 </script>
@@ -40,6 +47,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    min-height: 33px;
     &__title {
       margin: 0;
       color: blue;
