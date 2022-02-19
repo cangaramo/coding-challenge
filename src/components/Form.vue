@@ -24,6 +24,9 @@ import EventBus from '@/helpers/EventBus';
 import { required } from 'vuelidate/lib/validators';
 
 export default {
+  props: {
+    mockSuccess: Boolean,
+  },
   data() {
     return {
       interest: {
@@ -31,7 +34,6 @@ export default {
         movie: '',
         book: '',
       },
-      mockSuccess: true,
       submitted: false,
       loading: false,
       message: null,
