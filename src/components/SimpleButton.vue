@@ -32,8 +32,8 @@ export default {
   color: white;
   border-radius: 10px;
   cursor: pointer;
-  padding: 8px 16px;
-  font-size: 14px;
+  transition: all 0.15s;
+  transform: scale(1);
   &--small {
     padding: 8px 16px;
     font-size: 14px;
@@ -42,6 +42,12 @@ export default {
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 600;
+  }
+  &:hover {
+    background: $medium_blue;
+  }
+  &:active {
+    transform: scale(0.95);
   }
   &.is-loading {
     color: transparent!important;
@@ -61,9 +67,6 @@ export default {
       left: calc(50% - 0.5em);
       top: calc(50% - 0.5em);
     }
-  }
-  &:hover {
-    background: $medium_blue;
   }
 }
 @keyframes spinAround {

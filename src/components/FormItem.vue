@@ -66,7 +66,7 @@ export default {
   display: block;
   text-align: center;
   width: 350px;
-  background: #c6caed;
+  background: $light_purple;
   border-radius: 10px;
   padding: 18px;
   margin: 10px 0;
@@ -79,9 +79,12 @@ export default {
     min-height: 33px;
     &__title {
       margin: 0;
-      color: blue;
+      color: $blue;
       font-weight: 800;
       font-size: 18px;
+    }
+    button {
+      display: flex;
     }
   }
   &__body {
@@ -91,12 +94,13 @@ export default {
       padding: 8px 12px;
       border-radius: 10px;
       font-weight: 500;
+      color: $dark_blue;
       &:disabled {
         background: transparent;
         padding-left: 0;
       }
       &:not([disabled]) {
-        outline: 1px solid #4353ff;
+        outline: 1px solid $blue;
         box-shadow: 0 0 6px 1px rgb(66 83 255 / 45%);
       }
       &::placeholder {
