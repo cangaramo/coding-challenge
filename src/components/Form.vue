@@ -10,7 +10,10 @@
     <form-item v-model="interest.book" label="Favourite Book" placeholder="Your favourite book" />
     <p class="form__error" v-if="submitted && !$v.interest.book.required">Book is required</p>
     <!-- Submit -->
-    <simple-button class="form__button" nativeType="submit">Update</simple-button>
+    <simple-button class="form__button" nativeType="submit" :loading="loading">Update</simple-button>
+    <div v-if="message" class="form__message">
+      {{ message }}
+    </div>
   </form>
 </template>
 
@@ -28,6 +31,8 @@ export default {
         book: '',
       },
       submitted: false,
+      loading: false,
+      message: null,
     };
   },
   validations: {
@@ -50,8 +55,26 @@ export default {
         this.submitForm();
       }
     },
-    submitForm() {
-      console.log('Interest has been updated');
+    async submitForm() {
+      this.loading = true;
+      this.message = null;
+      try {
+        await this.mockUpdateInterest();
+        this.message = 'Interest has been updated successfully.';
+      } catch (e) {
+        this.message = e.message;
+      } finally {
+        this.loading = false;
+      }
+    },
+    // Mock promise
+    mockUpdateInterest() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (this.mockSuccess) resolve('Interest updated');
+          else reject(new Error('Interest couldn\'t be updated'));
+        }, 2000);
+      });
     },
   },
 };
@@ -69,6 +92,10 @@ export default {
     margin: 2px 0 6px 0;
     font-weight: 500;
     color: $red;
+  }
+  &__message {
+    margin-top: 30px;
+    font-weight: 600;
   }
 }
 </style>

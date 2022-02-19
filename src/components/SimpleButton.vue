@@ -3,13 +3,15 @@
     @click="$emit('click')"
     :type="nativeType"
     :class="['simple-button', `simple-button--${size}`]">
-    <slot></slot>
+    <span v-if="loading">Loading...</span>
+    <slot v-else></slot>
   </button>
 </template>
 
 <script>
 export default {
   props: {
+    loading: Boolean,
     nativeType: {
       type: String,
       default: 'button',
