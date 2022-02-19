@@ -6,7 +6,7 @@
       <button type="button" v-else @click="isEditable = !isEditable">Close</button>
     </div>
     <div class="form-item__body">
-      <input>
+      <input type="text" :placeholder="placeholder" :disabled="!isEditable">
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@
 export default {
   props: {
     label: String,
+    placeholder: String,
   },
   data() {
     return {
@@ -53,6 +54,14 @@ export default {
       padding: 8px 12px;
       border-radius: 10px;
       font-weight: 500;
+      &:disabled {
+        background: transparent;
+        padding-left: 0;
+      }
+      &:not([disabled]) {
+        outline: 1px solid #4353ff;
+        box-shadow: 0 0 6px 1px rgb(66 83 255 / 45%);
+      }
     }
   }
 }

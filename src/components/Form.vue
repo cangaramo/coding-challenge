@@ -1,7 +1,7 @@
 <template>
   <form class="form">
-    <form-item label="Full Name"></form-item>
-    <form-item label="Favourite Movie"></form-item>
+    <form-item label="Full Name" placeholder="Your full name"></form-item>
+    <form-item label="Favourite Movie" placeholder="Your favourite movie"></form-item>
   </form>
 </template>
 
