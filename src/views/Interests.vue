@@ -1,9 +1,17 @@
 <template>
-  <div>Form goes here</div>
+  <div>
+    <form-item label="Full Name"></form-item>
+  </div>
 </template>
 
 <script>
-export default {};
+import FormItem from '@/components/FormItem.vue';
+
+export default {
+  components: {
+    FormItem,
+  },
+};
 </script>
 
 <style></style>
