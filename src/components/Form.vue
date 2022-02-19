@@ -11,7 +11,7 @@
     <p class="form__error" v-if="submitted && !$v.interest.book.required">Book is required</p>
     <!-- Submit -->
     <simple-button class="form__button" nativeType="submit" :loading="loading">Update</simple-button>
-    <div v-if="message" class="form__message">
+    <div v-if="message" :class="[ 'form__message', { 'form__error' : error } ]">
       {{ message }}
     </div>
   </form>
@@ -35,6 +35,7 @@ export default {
       submitted: false,
       loading: false,
       message: null,
+      error: null,
     };
   },
   validations: {
@@ -61,10 +62,12 @@ export default {
       this.loading = true;
       EventBus.$emit('close-fields');
       this.message = null;
+      this.error = null;
       try {
         await this.mockUpdateInterest();
         this.message = 'Interest has been updated successfully.';
       } catch (e) {
+        this.error = true;
         this.message = e.message;
       } finally {
         this.loading = false;
