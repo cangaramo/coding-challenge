@@ -5,13 +5,14 @@
       <simple-button
         v-if="!isEditable"
         size="small"
-        @click="isEditable = !isEditable">
+        @click="editField">
         Edit
       </simple-button>
       <close-button v-else @click="isEditable = !isEditable"/>
     </div>
     <div class="form-item__body">
       <input
+        ref="field"
         type="text"
         :value="value"
         @input="$emit('input', $event.target.value)"
@@ -39,6 +40,13 @@ export default {
   components: {
     SimpleButton,
     CloseButton,
+  },
+  methods: {
+    editField() {
+      this.isEditable = true;
+      const input = this.$refs.field;
+      this.$nextTick(() => input.focus());
+    },
   },
 };
 </script>
