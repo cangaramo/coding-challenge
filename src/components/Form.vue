@@ -2,6 +2,7 @@
   <form class="form">
     <form-item label="Full Name" placeholder="Your full name"></form-item>
     <form-item label="Favourite Movie" placeholder="Your favourite movie"></form-item>
+    <form-item label="Favourite Book" placeholder="Your favourite book"></form-item>
   </form>
 </template>
 

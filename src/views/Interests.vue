@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>✨ My Interests ✨</h1>
     <Form></Form>
   </div>
 </template>
