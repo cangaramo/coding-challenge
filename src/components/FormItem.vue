@@ -70,11 +70,14 @@ export default {
 .form-item {
   display: block;
   text-align: center;
-  width: 350px;
   background: $light_purple;
   border-radius: 10px;
   padding: 18px;
   margin: 10px 0;
+  width: 100%;
+  @media (min-width: 576px) {
+    width: 350px;
+  }
   &__header {
     display: flex;
     flex-direction: row;

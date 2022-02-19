@@ -91,6 +91,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
   &__button {
     margin-top: 15px;
   }
