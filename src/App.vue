@@ -6,6 +6,10 @@
 
 <style lang="scss">
 #app {
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
 }
 </style>

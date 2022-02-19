@@ -1,15 +1,15 @@
 <template>
   <div>
-    <form-item label="Full Name"></form-item>
+    <Form></Form>
   </div>
 </template>
 
 <script>
-import FormItem from '@/components/FormItem.vue';
+import Form from '@/components/Form.vue';
 
 export default {
   components: {
-    FormItem,
+    Form,
   },
 };
 </script>

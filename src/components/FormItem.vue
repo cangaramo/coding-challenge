@@ -2,6 +2,8 @@
   <div class="form-item">
     <div class="form-item__header">
       <p class="form-item__header__title">{{ label }}</p>
+      <button type="button" v-if="!isEditable" @click="isEditable = !isEditable">Edit</button>
+      <button type="button" v-else @click="isEditable = !isEditable">Close</button>
     </div>
     <div class="form-item__body">
       <input>
@@ -14,20 +16,29 @@ export default {
   props: {
     label: String,
   },
+  data() {
+    return {
+      isEditable: false,
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .form-item {
-  margin: 0 auto;
   display: block;
   text-align: center;
   width: 350px;
   background: #c6caed;
   border-radius: 10px;
   padding: 18px;
+  margin: 10px 0;
   &__header {
-    margin-bottom: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
     &__title {
       margin: 0;
       color: blue;
