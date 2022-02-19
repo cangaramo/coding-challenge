@@ -8,7 +8,7 @@
         @click="editField">
         Edit
       </simple-button>
-      <close-button v-else @click="isEditable = !isEditable"/>
+      <close-button v-else @click="closeField"/>
     </div>
     <div class="form-item__body">
       <input
@@ -25,6 +25,7 @@
 <script>
 import SimpleButton from '@/components/SimpleButton.vue';
 import CloseButton from '@/components/CloseButton.vue';
+import EventBus from '@/helpers/EventBus';
 
 export default {
   props: {
@@ -47,6 +48,15 @@ export default {
       const input = this.$refs.field;
       this.$nextTick(() => input.focus());
     },
+    closeField() {
+      this.isEditable = false;
+    },
+  },
+  created() {
+    EventBus.$on('close-fields', this.closeField);
+  },
+  beforeDestroy() {
+    EventBus.$off('close-fields');
   },
 };
 </script>
@@ -88,6 +98,10 @@ export default {
       &:not([disabled]) {
         outline: 1px solid #4353ff;
         box-shadow: 0 0 6px 1px rgb(66 83 255 / 45%);
+      }
+      &::placeholder {
+        color: #9a9db5;
+        font-weight: 400;
       }
     }
   }

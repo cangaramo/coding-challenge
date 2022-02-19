@@ -20,6 +20,7 @@
 <script>
 import FormItem from '@/components/FormItem.vue';
 import SimpleButton from '@/components/SimpleButton.vue';
+import EventBus from '@/helpers/EventBus';
 import { required } from 'vuelidate/lib/validators';
 
 export default {
@@ -58,6 +59,7 @@ export default {
     },
     async submitForm() {
       this.loading = true;
+      EventBus.$emit('close-fields');
       this.message = null;
       try {
         await this.mockUpdateInterest();
