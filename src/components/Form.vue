@@ -30,6 +30,7 @@ export default {
         movie: '',
         book: '',
       },
+      mockSuccess: true,
       submitted: false,
       loading: false,
       message: null,

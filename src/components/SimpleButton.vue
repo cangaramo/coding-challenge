@@ -2,9 +2,8 @@
   <button
     @click="$emit('click')"
     :type="nativeType"
-    :class="['simple-button', `simple-button--${size}`]">
-    <span v-if="loading">Loading...</span>
-    <slot v-else></slot>
+    :class="['simple-button', `simple-button--${size}`, { 'is-loading' : loading }]">
+    <slot></slot>
   </button>
 </template>
 
@@ -44,8 +43,37 @@ export default {
     font-size: 16px;
     font-weight: 600;
   }
+  &.is-loading {
+    color: transparent!important;
+    pointer-events: none;
+    position: relative;
+    &:after {
+      animation: spinAround .5s infinite linear;
+      border: 2px solid #dbdbdb;
+      border-radius: 50%;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      content: "";
+      display: block;
+      height: 1em;
+      width: 1em;
+      position: absolute;
+      left: calc(50% - 0.5em);
+      top: calc(50% - 0.5em);
+    }
+  }
   &:hover {
     background: $medium_blue;
+  }
+}
+@keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg)
   }
 }
 </style>
